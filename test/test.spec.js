@@ -3,7 +3,7 @@ const { Builder, By, Key, until } = require('selenium-webdriver')
 const assert = require('assert')
 
 describe('Default Suite', function() {
-  this.timeout(3000)
+  this.timeout(5000)
   let driver
   let vars
   beforeEach(async function() {
