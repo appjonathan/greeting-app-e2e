@@ -22,6 +22,6 @@ describe('Default Suite', function() {
     await driver.findElement(By.id("nameInput")).click();
     await driver.findElement(By.id("nameInput")).sendKeys("Jonathan");
     await driver.findElement(By.css("button")).click();
-    await driver.wait(until.elementIsVisible(await driver.findElement(By.id("greetingMessage"))), 30000);
+    await driver.wait(until.elementIsVisible(await driver.findElement(By.id("greetingMessage"))), 3000);
   });
 });

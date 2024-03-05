@@ -24,7 +24,7 @@ jobs:
       - run: npm run build --if-present
       - name: Start server
         run: npm start &
-      - name: Run tests
+      - name: Run Sylenium tests
         run: npx mocha test/test.spec.js
         env:
           CI: true
