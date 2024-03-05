@@ -24,7 +24,7 @@ jobs:
       run: npm ci
 
     - name: Build
-      run: npm run build
+      run: node server.js
 
     - name: Selenium Test
       run: npx mocha test/test.spec.js
