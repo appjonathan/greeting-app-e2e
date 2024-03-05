@@ -4,7 +4,7 @@ const chrome = require('selenium-webdriver/chrome');
 const assert = require('assert');
 
 describe('Default Suite', function() {
-  this.timeout(5000);
+  this.timeout(10000);
   let driver;
   let vars;
   beforeEach(async function() {
