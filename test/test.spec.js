@@ -7,9 +7,10 @@ describe('Default Suite', function() {
   let driver
   let vars
   beforeEach(async function() {
-    driver = await new Builder().forBrowser('chrome').build()
-    vars = {}
-  })
+    let chromeOptions = new chrome.Options();
+    chromeOptions.addArguments("--headless");
+    driver = new webdriver.Builder().forBrowser('chrome').setChromeOptions(chromeOptions).build();
+  });
   afterEach(async function() {
     await driver.quit();
   })
