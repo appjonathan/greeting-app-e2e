@@ -1,9 +1,8 @@
-name: CI
+
+name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
     branches: [ main ]
 
 jobs:
@@ -11,20 +10,19 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout source code
-      uses: actions/checkout@v2
+    strategy:
+      matrix:
+        node-version: [14.x]
 
-    - name: Set up Node.js
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
-        node-version: 14
-
-    - name: Install dependencies
-      run: npm ci
-
-    - name: Build
-      run: node server.js
-
-    - name: Selenium Test
-      run: npx mocha test/test.spec.js
+        node-version: ${{ matrix.node-version }}
+    - run: npm install
+    - run: npm install express
+    - run: npm run build --if-present
+    - run: ./node_modules/.bin/mocha test.spec.js
+      env:
+        CI: true
